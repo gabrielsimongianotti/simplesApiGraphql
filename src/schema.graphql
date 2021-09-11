@@ -1,0 +1,108 @@
+type City {
+  id: String
+  name: String
+  country: String
+  coord: Coordinates
+  weather: Weather
+}
+
+
+type Clouds {
+  all: Int
+  visibility: Int
+  humidity: Int
+}
+
+type Coordinates {
+  lon: Float
+  lat: Float
+}
+
+type Summary {
+  title: String
+  description: String
+  icon: String
+}
+
+type Temperature {
+  actual: Float
+  feelsLike: Float
+  min: Float
+  max: Float
+}
+
+type Weather {
+  summary: Summary
+  temperature: Temperature
+  wind: Wind
+  clouds: Clouds
+  timestamp: Int
+}
+
+type Wind {
+  speed: Float
+  deg: Int
+}
+
+input InputCity {
+  name: String
+  country: String
+  coord: InputCoordinates
+  weather: InputWeather
+}
+
+input InputUpdataCity {
+  id: String
+  name: String
+  country: String
+  coord: InputCoordinates
+  weather: InputWeather
+}
+
+input InputClouds {
+  all: Int
+  visibility: Int
+  humidity: Int
+}
+
+input inputTemperature {
+  actual: Float
+  feelsLike: Float
+  min: Float
+  max: Float
+}
+
+input InputCoordinates {
+  lon: Float
+  lat: Float
+}
+
+input InputSummary {
+  title: String
+  description: String
+  icon: String
+}
+
+input InputWeather {
+  summary: InputSummary
+  temperature: inputTemperature
+  wind: InputWind
+  clouds: InputClouds
+  timestamp: Int
+}
+
+input InputWind {
+  speed: Float
+  deg: Int
+}
+
+type Query {
+  getCities: [City]
+  getCityById(id:String): City
+}
+
+type Mutation {
+  CreateCity(city: InputCity): City
+  UpdateCity(updataCity: InputUpdataCity): City
+  DeleteCity(id:String):String
+}
