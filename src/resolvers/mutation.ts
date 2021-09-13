@@ -12,15 +12,15 @@ module.exports = {
       set(cities);
       return newCity;
     },
-    UpdateCity: (_: any, { updataCity }: { updataCity: InputCity }): City[] => {
+    UpdateCity: (_: any, { updataCity }: { updataCity: InputCity }): City => {
       const cities = get()
-      cities.map(city => city.id === updataCity.id ? updataCity : city)
-      set(cities);
-      return cities;
+      const newCities = cities.map(city => city.id == updataCity.id ? updataCity : city)
+      set(newCities);
+      return updataCity;
     },
     DeleteCity: (_: any, { id }: { id: string }) => {
       const cities = get()
-      const newCities:City[] = cities.filter((city) => city.id !== id);
+      const newCities: City[] = cities.filter((city) => city.id !== id);
       set(newCities);
       return id
     }
